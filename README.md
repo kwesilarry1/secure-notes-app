@@ -1,6 +1,6 @@
 #  Secure Notes App
 
-A modern Flutter based note taking application focused on privacy and simplicity develop as my semester project.
+A simple Flutter based note taking application focused on privacy and simplicity develop as my semester project.
 This app allows users to securely store personal notes locally on their device using a PIN-based authentication system.
 
 ---
