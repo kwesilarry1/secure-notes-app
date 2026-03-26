@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/note.dart';
 import '../services/storage_service.dart';
 import 'add_note_screen.dart';
+import 'view_note_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -78,6 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: ListTile(
+                        onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ViewNoteScreen(note: n),
+      ),
+    );
+  },
                       title: Text(n.title,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       subtitle: Text(
@@ -124,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
         style: TextStyle(fontSize: 11, color: Colors.grey),
       ),
     ],
+    
   ),
 ),
     );

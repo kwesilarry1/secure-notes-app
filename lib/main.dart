@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'services/storage_service.dart';
-import '../models/note.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
