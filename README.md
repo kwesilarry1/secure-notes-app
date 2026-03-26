@@ -7,12 +7,12 @@ This app allows users to securely store personal notes locally on their device u
 
 ## 📱 Features
 
-* 🔐 PIN Authentication (first-time setup + login)
-* 📝 Create notes with title and content
-* 🕒 Automatic timestamp for each note
-* 🗑 Delete notes
-* 💾 Local storage using SharedPreferences
-* 🎨 Clean dark-themed UI
+*  PIN Authentication (first-time setup + login)
+*  Create notes with title and content
+*  Automatic timestamp for each note
+*  Delete notes
+*  Local storage using SharedPreferences
+*  Clean dark-themed UI
 ---
 
 ## 🧠 Concept
@@ -48,30 +48,9 @@ lib/
 
 ---
 
-## 🚀 Getting Started
 
-### 1. Clone the repository
 
-```
-git clone https://github.com/your-username/secure-notes-app.git
-cd secure-notes-app
-```
-
-### 2. Install dependencies
-
-```
-flutter pub get
-```
-
-### 3. Run the app
-
-```
-flutter run
-```
-
----
-
-## 🔐 Security Note
+##  Disclaimer
 
 This app simulates a secure environment using local storage and PIN authentication.
 While it demonstrates core security concepts, it does **not implement real encryption** and should not be used for storing highly sensitive data in production.
