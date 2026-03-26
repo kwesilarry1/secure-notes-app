@@ -5,57 +5,55 @@ import 'home_screen.dart';
 class LoginScreen extends StatefulWidget {
   final bool isFirstTime;
 
-  const LoginScreen({super.key, this.isFirstTime = false});
+  const LoginScreen({super.key, required this.isFirstTime});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _controller = TextEditingController();
+  final controller = TextEditingController();
   String error = "";
 
-  void handleSubmit() async {
-    String input = _controller.text;
-
+  void submit() async {
     if (widget.isFirstTime) {
-      await StorageService.savePin(input);
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => HomeScreen()),
-      );
+      await StorageService.savePin(controller.text);
+      goHome();
     } else {
-      String? savedPin = await StorageService.getPin();
-      if (input == savedPin) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
+      String? pin = await StorageService.getPin();
+      if (controller.text == pin) {
+        goHome();
       } else {
-        setState(() {
-          error = "Wrong PIN";
-        });
+        setState(() => error = "Wrong PIN");
       }
     }
+  }
+
+  void goHome() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => HomeScreen()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Icon(Icons.lock, size: 60),
+            SizedBox(height: 20),
             Text(
-              widget.isFirstTime ? "Set PIN" : "Enter PIN",
-              style: TextStyle(fontSize: 24),
+              widget.isFirstTime ? "Create PIN" : "Enter PIN",
+              style: TextStyle(fontSize: 22),
             ),
             SizedBox(height: 20),
             TextField(
-              controller: _controller,
+              controller: controller,
               obscureText: true,
-              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "PIN",
@@ -64,10 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 10),
             Text(error, style: TextStyle(color: Colors.red)),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: handleSubmit,
-              child: Text("Continue"),
-            )
+            ElevatedButton(onPressed: submit, child: Text("Continue"))
           ],
         ),
       ),

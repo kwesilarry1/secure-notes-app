@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import '../models/note.dart';
 import '../services/storage_service.dart';
 
 class AddNoteScreen extends StatefulWidget {
@@ -9,39 +11,52 @@ class AddNoteScreen extends StatefulWidget {
 }
 
 class _AddNoteScreenState extends State<AddNoteScreen> {
-  final TextEditingController _controller = TextEditingController();
+  final title = TextEditingController();
+  final content = TextEditingController();
 
-  void saveNote() async {
-    if (_controller.text.isEmpty) return;
+  void save() async {
+    if (title.text.isEmpty) return;
 
-    List<String> notes = await StorageService.getNotes();
-    notes.add(_controller.text);
+    List<Note> notes = await StorageService.getNotes();
+
+    notes.add(Note(
+      title: title.text,
+      content: content.text,
+      date: DateFormat('MMM d, HH:mm').format(DateTime.now()),
+    ));
+
     await StorageService.saveNotes(notes);
-
     Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Add Note"),
-      ),
+      appBar: AppBar(title: Text("New Secure Note")),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             TextField(
-              controller: _controller,
+              controller: title,
               decoration: InputDecoration(
+                hintText: "Title",
                 border: OutlineInputBorder(),
-                hintText: "Write your note...",
+              ),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: content,
+              maxLines: 5,
+              decoration: InputDecoration(
+                hintText: "Write note...",
+                border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: saveNote,
-              child: Text("Save"),
+              onPressed: save,
+              child: Text("Encrypt & Save 🔒"),
             )
           ],
         ),

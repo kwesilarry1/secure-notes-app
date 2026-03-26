@@ -1,17 +1,106 @@
-# note_app
+#  Secure Notes App
 
-A new Flutter project.
+A modern Flutter based note taking application focused on privacy and simplicity.
+This app allows users to securely store personal notes locally on their device using a PIN-based authentication system.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Features
 
-A few resources to get you started if this is your first Flutter project:
+* 🔐 PIN Authentication (first-time setup + login)
+* 📝 Create notes with title and content
+* 🕒 Automatic timestamp for each note
+* 🗑 Delete notes
+* 💾 Local storage using SharedPreferences
+* 🎨 Clean dark-themed UI
+---
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🧠 Concept
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This application demonstrates how to build a lightweight secure note system without relying on external servers.
+All user data is stored locally, making it fast, offline-capable, and privacy-friendly.
+
+---
+
+## 🛠 Tech Stack
+
+* **Flutter** (UI framework)
+* **Dart** (programming language)
+* **SharedPreferences** (local storage)
+* **intl** (date formatting)
+
+---
+
+## 📂 Project Structure
+
+```
+lib/
+ ├── main.dart
+ ├── models/
+ │    └── note.dart
+ ├── services/
+ │    └── storage_service.dart
+ └── screens/
+      ├── login_screen.dart
+      ├── home_screen.dart
+      └── add_note_screen.dart
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```
+git clone https://github.com/your-username/secure-notes-app.git
+cd secure-notes-app
+```
+
+### 2. Install dependencies
+
+```
+flutter pub get
+```
+
+### 3. Run the app
+
+```
+flutter run
+```
+
+---
+
+## 🔐 Security Note
+
+This app simulates a secure environment using local storage and PIN authentication.
+While it demonstrates core security concepts, it does **not implement real encryption** and should not be used for storing highly sensitive data in production.
+
+---
+
+## 🎯 Learning Objectives
+
+* Understanding Flutter app structure
+* Implementing local data persistence
+* Managing application state
+* Building authentication flow (PIN-based)
+* Designing clean and responsive UI
+
+---
+
+## 📸 Screenshots
+
+*Add screenshots here before submission for better presentation.*
+
+---
+
+## 👨‍💻 Author
+
+**Larry**
+Cybersecurity Student | Flutter Developer | AppSec Enthusiast
+
+---
+
+## 📄 License
+
+This project is for educational purposes.

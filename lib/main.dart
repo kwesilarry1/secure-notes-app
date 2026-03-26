@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
-import 'screens/home_screen.dart';
 import 'services/storage_service.dart';
+import '../models/note.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final hasPin = await StorageService.hasPin();
+  bool hasPin = await StorageService.hasPin();
   runApp(MyApp(hasPin: hasPin));
 }
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Secure Notes',
       theme: ThemeData.dark(),
-      home: hasPin ? LoginScreen() : LoginScreen(isFirstTime: true),
+      home: LoginScreen(isFirstTime: !hasPin),
     );
   }
 }
